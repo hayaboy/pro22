@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>pro22</display-name>
+
+	<!-- context(pro22)가 로딩될 때의 이벤트 감지 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/config/action-dataSource.xml
+			/WEB-INF/config/action-service.xml
+		</param-value>
+	</context-param>
+
+
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+		<!-- DispatcherServlet은 실제 서블릿(HttpServlet 기본 클래스에서 상속됨)이므로 웹 애플리케이션의 web.xml에서 
+			선언됩니다. DispatcherServlet이 처리하기를 원하는 요청은 동일한 web.xml 파일에서 URL 매핑을 사용하여 매핑되어야 
+			합니다. -->
+
+		<load-on-startup>1</load-on-startup> <!-- 1이상이면 미리 메모리에 로딩해 놓는 것, DispatcherServlet은 계속 상시 대기하고 있어야 하므로, 0이면 요청시 
+			객체가 생성, 그전에 미리 만들어 놓고 계속사용하려면 1로 해 놓는 방법을 사용 -->
+	</servlet>
+
+
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
