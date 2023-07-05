@@ -8,4 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 public interface MemberController {
 
 		public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception;
+		
+		public ModelAndView memberForm(HttpServletRequest request, HttpServletResponse response) throws Exception;
+		public ModelAndView addMember(HttpServletRequest request, HttpServletResponse response) throws Exception;
+		public ModelAndView delMember(HttpServletRequest request, HttpServletResponse response) throws Exception;
+		
+		
 }
